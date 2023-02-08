@@ -1,7 +1,51 @@
 import home from "./assets/images/home.jpg"
 import bca from "./assets/images/bca.png"
+import { useEffect, useRef, useState } from "react";
+import copy from "copy-to-clipboard";
 
 function App() {
+  const [timerDays, setTimerDays] = useState('00');
+  const [timerHours, setTimerHours] = useState('00');
+  const [timerMinutes, setTimerMinutes] = useState('00');
+  const [timerSeconds, setTimerSeconds] = useState('00');
+
+
+  let interval = useRef();
+
+  const startTimer = () => {
+    const countdownDate = new Date('Feb 19, 2023 10:00:00').getTime();
+
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance < 0) {
+        //stop our timer
+        clearInterval(interval.current);
+      } else {
+        //update timer
+        setTimerDays(days);
+        setTimerHours(hours);
+        setTimerMinutes(minutes);
+        setTimerSeconds(seconds);
+      }
+    }, 1000);
+  }
+
+  //componentDidMount
+  useEffect(() => {
+    startTimer();
+    return () => {
+      clearInterval(interval.current);
+    };
+  });
+
+
   return (
     <div>
       <div className="flex justify-center font-wondar">
@@ -10,24 +54,24 @@ function App() {
             <div>
               We are getting married
             </div>
-            <div className="font-amsterdam text-5xl mt-5">Pony & Hendi</div>
+            <div className="font-amsterdam text-3xl md:text-4xl xl:text-5xl mt-5">Pony & Hendi</div>
             <div className="absolute bottom-20 w-full lg:w-2/6">
-              <div className="grid grid-cols-4 px-7">
+              <div className="grid grid-cols-4 px-7 bg-black/70">
                 <div className="w-full border border-white py-3">
-                  <div>0</div>
-                  <div>Days</div>
+                  <div>{ timerDays }</div>
+                  <div>Hari</div>
                 </div>
                 <div className="w-full border border-white py-3">
-                  <div>0</div>
-                  <div>Days</div>
+                  <div>{ timerHours }</div>
+                  <div>Jam</div>
                 </div>
                 <div className="w-full border border-white py-3">
-                  <div>0</div>
-                  <div>Days</div>
+                  <div>{ timerMinutes }</div>
+                  <div>Menit</div>
                 </div>
                 <div className="w-full border border-white py-3">
-                  <div>0</div>
-                  <div>Days</div>
+                  <div>{ timerSeconds }</div>
+                  <div>Detik</div>
                 </div>
               </div>
             </div>
@@ -35,7 +79,7 @@ function App() {
         </div>
       </div>
       <div className="flex justify-center font-wondar">
-        <div className="w-full lg:w-2/6 h-screen bg-slate-800 text-white px-10 pt-10 text-center space-y-10">
+        <div className="w-full lg:w-2/6 min-h-screen pb-10 bg-slate-800 text-white px-10 pt-10 text-center space-y-10">
           <div>
             <div className="text-4xl underline font-semibold">Akad Nikah</div>
             <div className="grid grid-cols-1 text-2xl mt-7">
@@ -65,7 +109,7 @@ function App() {
               <div>
                 Jl. Bakti VI RT 001 RW 08 No. 30, Kelurahan Gaga, Kecamatan Larangan
               </div>
-              <a href='https://goo.gl/maps/nT3UVpquQAj258cUA' target="_blank" className="border border-white py-3 px-4 rounded hover:border-black hover:bg-white hover:text-black font-bold mt-10">
+              <a href='https://goo.gl/maps/nT3UVpquQAj258cUA' rel="noreferrer" target="_blank" className="border border-white py-3 px-4 rounded hover:border-black hover:bg-white hover:text-black font-bold mt-10">
                 Open maps
               </a>
             </div>
@@ -82,16 +126,18 @@ function App() {
           <div className="grid grid-cols-1 gap-4 text-xl">
             <div className="flex bg-slate-800 text-white justify-between px-4 items-center py-4 rounded">
               <div>
-                <img src={bca} className="w-24" alt="" srcset="" />
+                <img src={bca} className="w-24" alt="" />
               </div>
               <div className="text-left">
                 <div>A.n. Pony Ayu Winarny</div>
                 <div>2721772260</div>
               </div>
               <div className="w-1/6 flex justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
-                </svg>
+                <div className="hover:bg-white active:bg-slate-700 active:text-white hover:text-black p-2 rounded-full transition duration-150 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 " onClick={() => copy("2721772260")}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
@@ -103,9 +149,11 @@ function App() {
                 Jl. Bakti VI RT 001 RW 08 No. 30, Kelurahan Gaga, Kecamatan Larangan
               </div>
               <div className="w-1/6 flex justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
-                </svg>
+                <div className="hover:bg-white active:bg-slate-700 active:text-white hover:text-black p-2 rounded-full transition duration-150 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6" onClick={() => copy("Jl. Bakti VI RT 001 RW 08 No. 30, Kelurahan Gaga, Kecamatan Larangan, Kota Tangerang, Banten 15154")}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                  </svg>
+                </div>
               </div>
             </div>
         </div>
