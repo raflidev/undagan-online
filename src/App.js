@@ -118,7 +118,7 @@ function App() {
       </div>
 
       <div className="flex justify-center font-wondar">
-        <div className="w-full lg:w-2/6 h-screen bg-slate-200 text-black px-10 pt-10 text-center space-y-10">
+        <div className="w-full lg:w-2/6 min-h-screen bg-slate-200 text-black px-10 pt-10 text-center space-y-10">
           <div className="text-3xl">WEDDING <span className="font-amsterdam">Gift</span> </div>
           <div className="italic tracking-wide text-xl">
             Kehadiran dan doa Anda akan menjadi hadiah pernikahan terbesar yang pernah kami minta. Tidak ada hadiah lain yang dibutuhkan atau diharapkan. Namun, jika memberi adalah tanda cinta, kita senang menerimanya dan tentunya akan semakin melengkapi kebahagiaan kita.
