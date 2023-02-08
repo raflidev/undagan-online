@@ -2,13 +2,15 @@ import home from "./assets/images/home.jpg"
 import bca from "./assets/images/bca.png"
 import { useEffect, useRef, useState } from "react";
 import copy from "copy-to-clipboard";
+import Sound from "react-sound";
+import biw from "./assets/biw.mp3";
 
 function App() {
   const [timerDays, setTimerDays] = useState('00');
   const [timerHours, setTimerHours] = useState('00');
   const [timerMinutes, setTimerMinutes] = useState('00');
   const [timerSeconds, setTimerSeconds] = useState('00');
-
+  const [isPlaying, setIsPlaying] = useState(false);
 
   let interval = useRef();
 
@@ -49,6 +51,40 @@ function App() {
 
   return (
     <div>
+      <div className="fixed w-full bottom-5 left-5">
+        <div className="flex justify-center">
+          <div className="w-full lg:w-2/6">
+            <button onClick={() => setIsPlaying(!isPlaying)} className="bg-white px-3 rounded ">
+              {isPlaying ? (
+                <div className="flex items-center space-x-1">
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                      <path fillRule="evenodd" d="M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    Play
+                  </div>
+                </div>
+
+              ) : (
+                <div className="flex items-center space-x-1">
+                  <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                      <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    Pause 
+                  </div>
+                </div>
+
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+      <Sound url={biw} playStatus={isPlaying ? "PLAYING" : "STOPPED"} />
       <div className="flex justify-center font-wondar">
         <div className="w-full lg:w-2/6 bg-slate-200 h-screen bg-cover bg-center text-white" style={{backgroundImage: `url(${home})` }}>
           <div className="text-center text-xl pt-10">
@@ -80,7 +116,6 @@ function App() {
         </div>
       </div>
       <div className="flex justify-center font-wondar">
-      <iframe width="0" height="0" src="https://www.youtube.com/embed/XRuDQ6aYeD0?&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         <div className="w-full lg:w-2/6 min-h-screen pb-10 bg-slate-800 text-white px-10 pt-10 text-center space-y-10">
           <div>
             <div className="text-4xl underline font-semibold">Akad Nikah</div>
