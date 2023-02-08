@@ -10,7 +10,7 @@ function App() {
   const [timerHours, setTimerHours] = useState('00');
   const [timerMinutes, setTimerMinutes] = useState('00');
   const [timerSeconds, setTimerSeconds] = useState('00');
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   let interval = useRef();
 
@@ -84,7 +84,7 @@ function App() {
           </div>
         </div>
       </div>
-      <Sound url={biw} playStatus={isPlaying ? "PLAYING" : "STOPPED"} />
+      <Sound url={biw} playStatus={isPlaying ? "PLAYING" : "PAUSED"} autoLoad={true} />
       <div className="flex justify-center font-wondar">
         <div className="w-full lg:w-2/6 bg-slate-200 h-screen bg-cover bg-center text-white" style={{backgroundImage: `url(${home})` }}>
           <div className="text-center text-xl pt-10">
