@@ -43,6 +43,7 @@ function App() {
     return () => {
       clearInterval(interval.current);
     };
+
   });
 
 
@@ -79,6 +80,7 @@ function App() {
         </div>
       </div>
       <div className="flex justify-center font-wondar">
+      <iframe width="0" height="0" src="https://www.youtube.com/embed/XRuDQ6aYeD0?&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         <div className="w-full lg:w-2/6 min-h-screen pb-10 bg-slate-800 text-white px-10 pt-10 text-center space-y-10">
           <div>
             <div className="text-4xl underline font-semibold">Akad Nikah</div>
