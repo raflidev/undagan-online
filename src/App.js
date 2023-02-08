@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import copy from "copy-to-clipboard";
 import Sound from "react-sound";
 import biw from "./assets/biw.mp3";
+import wedding from "./assets/images/wedding.png";
 
 function App() {
   const [timerDays, setTimerDays] = useState('00');
@@ -116,39 +117,41 @@ function App() {
         </div>
       </div>
       <div className="flex justify-center font-wondar">
-        <div className="w-full lg:w-2/6 min-h-screen pb-10 bg-slate-800 text-white px-10 pt-10 text-center space-y-10">
-          <div>
-            <div className="text-4xl underline font-semibold">Akad Nikah</div>
-            <div className="grid grid-cols-1 text-2xl mt-7">
-              <div>Minggu</div>
-              <div className="text-3xl">19</div>
-              <div>Februari 2023</div>
-              <div>
-                Jam: 10:00 WIB - Selesai
-              </div>
-              <div>Lokasi di</div>
-              <div>
-                Jl. Bakti VI RT 001 RW 08 No. 30, Kelurahan Gaga, Kecamatan Larangan
+        <div className="w-full lg:w-2/6 min-h-screen bg-slate-800 text-white  text-center bg-cover bg-center" style={{backgroundImage: `url(${wedding})` }}>
+          <div className="bg-black/50 px-10 pt-10 pb-10 space-y-10">
+            <div>
+              <div className="text-4xl underline font-semibold">Akad Nikah</div>
+              <div className="grid grid-cols-1 text-2xl mt-7">
+                <div>Minggu</div>
+                <div className="text-3xl">19</div>
+                <div>Februari 2023</div>
+                <div>
+                  Jam: 10:00 WIB - Selesai
+                </div>
+                <div>Lokasi di</div>
+                <div>
+                  Jl. Bakti VI RT 001 RW 08 No. 30, Kelurahan Gaga, Kecamatan Larangan
+                </div>
               </div>
             </div>
-          </div>
 
-          <div>
-            <div className="text-4xl underline font-semibold">Resepsi Nikah</div>
-            <div className="grid grid-cols-1 text-2xl mt-7">
-              <div>Minggu</div>
-              <div className="text-3xl">19</div>
-              <div>Februari 2023</div>
-              <div>
-                Jam: 11:00 WIB - Selesai
+            <div>
+              <div className="text-4xl underline font-semibold">Resepsi Nikah</div>
+              <div className="grid grid-cols-1 text-2xl mt-7">
+                <div>Minggu</div>
+                <div className="text-3xl">19</div>
+                <div>Februari 2023</div>
+                <div>
+                  Jam: 11:00 WIB - Selesai
+                </div>
+                <div>Lokasi di</div>
+                <div>
+                  Jl. Bakti VI RT 001 RW 08 No. 30, Kelurahan Gaga, Kecamatan Larangan
+                </div>
+                <a href='https://goo.gl/maps/nT3UVpquQAj258cUA' rel="noreferrer" target="_blank" className="border border-white py-3 px-4 rounded hover:border-black hover:bg-white hover:text-black font-bold mt-10">
+                  Open maps
+                </a>
               </div>
-              <div>Lokasi di</div>
-              <div>
-                Jl. Bakti VI RT 001 RW 08 No. 30, Kelurahan Gaga, Kecamatan Larangan
-              </div>
-              <a href='https://goo.gl/maps/nT3UVpquQAj258cUA' rel="noreferrer" target="_blank" className="border border-white py-3 px-4 rounded hover:border-black hover:bg-white hover:text-black font-bold mt-10">
-                Open maps
-              </a>
             </div>
           </div>
         </div>
