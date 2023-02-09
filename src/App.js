@@ -157,6 +157,19 @@ function App() {
         </div>
       </div>
 
+      <div className="flex justify-center">
+        <div className="w-full lg:w-2/6 bg-slate-600 text-white px-10 pt-10 pb-16 text-center space-y-4">
+          <div>
+            Ar Rum Ayat 21
+          </div>
+          <div>
+            وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ  
+          </div>
+          <div>
+            Artinya: "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.
+          </div>
+        </div>
+      </div>
       <div className="flex justify-center font-wondar">
         <div className="w-full lg:w-2/6 min-h-screen bg-slate-200 text-black px-10 pt-10 pb-16 text-center space-y-10">
           <div className="text-3xl">WEDDING <span className="font-amsterdam">Gift</span> </div>
